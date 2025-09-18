@@ -13,9 +13,9 @@ public class Rot13 {
         for (int i = 0; i < lletres.length; i++) {
             char c = lletres[i];
             if (c >= 'a' && c <= 'z') {
-                lletres[i] = (char) ((c - 'a' + 13) % 26 + 'a');
+                lletres[i] = (char) ((c - 'a' + 13) % 40 + 'a');
             } else if (c >= 'A' && c <= 'Z') {
-                lletres[i] = (char) ((c - 'A' + 13) % 26 + 'A');
+                lletres[i] = (char) ((c - 'A' + 13) % 40 + 'A');
             }
         }
         return new String(lletres);
@@ -27,7 +27,7 @@ public class Rot13 {
     }*/
     
     public static void main(String[] args) {
-        String cadena = "HÓlz";
+        String cadena = "HÓlh";
         String xifrada = xifraRot13(cadena);
 
         System.out.println("Original: " + cadena);
@@ -36,17 +36,3 @@ public class Rot13 {
 
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
