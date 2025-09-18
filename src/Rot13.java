@@ -5,20 +5,36 @@ public class Rot13 {
 
     char [] minus = abcMinus.toCharArray();
     char [] majus = abcMajus.toCharArray();
+
+    String cadena = "Holz";
     
-    xifraRot13(String cadena){
-        for (char l : cadena.toCharArray()) {
-            if (l >= 'a' && l <= 'z'){
-                ((char) ((l - 'a' + 13) % 40 + 'a'));
+    public static String xifraRot13(String cadena){
+        char[] lletres = cadena.toCharArray();
+        for (int i = 0; i < lletres.length; i++) {
+            char c = lletres[i];
+            if (c >= 'a' && c <= 'z') {
+                lletres[i] = (char) ((c - 'a' + 13) % 26 + 'a');
+            } else if (c >= 'A' && c <= 'Z') {
+                lletres[i] = (char) ((c - 'A' + 13) % 26 + 'A');
             }
         }
-        return 
+        return new String(lletres);
     }
 
 
-    desxifraRot13(cadena){
+    /*desxifraRot13(cadena){
 
-    } 
+    }*/
+    
+    public static void main(String[] args) {
+        String cadena = "HÓlz";
+        String xifrada = xifraRot13(cadena);
+
+        System.out.println("Original: " + cadena);
+        System.out.println("Xifrada : " + xifrada);
+    }
+
+    
 }
 
 
