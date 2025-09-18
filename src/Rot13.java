@@ -6,8 +6,8 @@ public class Rot13 {
     char [] minus = abcMinus.toCharArray();
     char [] majus = abcMajus.toCharArray();
     
-    xifraRot13(minus){
-        for (char l : abcMinus.toCharArray()) {
+    xifraRot13(String cadena){
+        for (char l : cadena.toCharArray()) {
             if (l >= 'a' && l <= 'z'){
                 ((char) ((l - 'a' + 13) % 40 + 'a'));
             }
