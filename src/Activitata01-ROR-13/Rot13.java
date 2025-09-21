@@ -1,38 +1,59 @@
 public class Rot13 {
     
-    String  abcMinus = "aàábcçdeèéfghiìíïjklmnñoòópqrstuùúüvwxyz";
-    String abcMajus = abcMinus.toUpperCase();
+    static String abcMinus = "aàábcçdeèéfghiìíïjklmnñoòópqrstuùúüvwxyz";
+    static String abcMajus = abcMinus.toUpperCase();
 
-    char [] minus = abcMinus.toCharArray();
-    char [] majus = abcMajus.toCharArray();
-
-    String cadena = "Holz";
-    
     public static String xifraRot13(String cadena){
-        char[] lletres = cadena.toCharArray();
-        for (int i = 0; i < lletres.length; i++) {
-            char c = lletres[i];
-            if (c >= 'a' && c <= 'z') {
-                lletres[i] = (char) ((c - 'a' + 13) % 40 + 'a'); //char - 'a' converteix el char en número x Unicode
-            } else if (c >= 'A' && c <= 'Z') {
-                lletres[i] = (char) ((c - 'A' + 13) % 40 + 'A');
+        char [] minus = abcMinus.toCharArray();
+        char [] majus = abcMajus.toCharArray();
+        String solucio = "";
+
+        for (int i = 0; i < cadena.length(); i++) {
+            char c = cadena.charAt(i);
+            int pos = abcMinus.indexOf(c);
+            if (pos != -1) { //la lletra és minuscula
+                solucio += minus[(pos + 13) % minus.length];
+            } else {
+                pos = abcMajus.indexOf(c);
+                if (pos != -1){ //la lletra és majuscula
+                    solucio += majus[(pos + 13) % majus.length];
+                } else {
+                    solucio += c;
+                }
             }
         }
-        return new String(lletres);
+        return solucio;
     }
-
-
-    /*desxifraRot13(cadena){
-
-    }*/
     
+    public static String desxifraRot13(String cadena){
+        char [] minus = abcMinus.toCharArray();
+        char [] majus = abcMajus.toCharArray();
+        String solucio = "";
+
+        for (int i = 0; i < cadena.length(); i++) {
+            char c = cadena.charAt(i);
+            int pos = abcMinus.indexOf(c);
+            if (pos != -1) { //la lletra és minuscula
+                solucio += minus[((pos - 13) % minus.length + minus.length) % minus.length];//convetim l'índex en +
+            } else {
+                pos = abcMajus.indexOf(c);
+                if (pos != -1){ //la lletra és majuscula
+                    solucio += majus[((pos - 13) % minus.length + minus.length) % minus.length];//convetim l'índex en +
+                } else {
+                    solucio += c;
+                }
+            }
+        }
+        return solucio;
+    }
+    
+/*  PER FER PROVES  
     public static void main(String[] args) {
-        String cadena = "HÓlh";
-        String xifrada = xifraRot13(cadena);
+        String cadena = "Zmálx, zmá bc acñ nà?";
+        String xifrada = desxifraRot13(cadena);
 
         System.out.println("Original: " + cadena);
         System.out.println("Xifrada : " + xifrada);
     }
-
-    
 }
+*/
