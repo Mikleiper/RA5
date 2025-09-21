@@ -46,14 +46,15 @@ public class Rot13 {
         }
         return solucio;
     }
+}
     
-/*  PER FER PROVES  
-    public static void main(String[] args) {
+  /*PER FER PROVES  
+public static void main(String[] args) {
         String cadena = "Zmálx, zmá bc acñ nà?";
         String xifrada = desxifraRot13(cadena);
 
         System.out.println("Original: " + cadena);
         System.out.println("Xifrada : " + xifrada);
     }
-}
-*/
+}*/
+
