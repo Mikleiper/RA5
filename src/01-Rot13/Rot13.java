@@ -1,7 +1,7 @@
 public class Rot13 {
     
     static String abcMinus = "aàábcçdeèéfghiìíïjklmnñoòópqrstuùúüvwxyz";
-    static String abcMajus = abcMinus.toUpperCase();
+    static String abcMajus = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ";
 
     public static String xifraRot13(String cadena){
         char [] minus = abcMinus.toCharArray();
