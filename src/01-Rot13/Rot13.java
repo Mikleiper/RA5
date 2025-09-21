@@ -1,11 +1,11 @@
 public class Rot13 {
     
     static String abcMinus = "aàábcçdeèéfghiìíïjklmnñoòópqrstuùúüvwxyz";
-    static String abcMajus = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ";
+    static String abcMajus = abcMinus.toUpperCase();
+    static char [] minus = abcMinus.toCharArray();
+    static char [] majus = abcMajus.toCharArray();
 
     public static String xifraRot13(String cadena){
-        char [] minus = abcMinus.toCharArray();
-        char [] majus = abcMajus.toCharArray();
         String solucio = "";
 
         for (int i = 0; i < cadena.length(); i++) {
@@ -26,8 +26,6 @@ public class Rot13 {
     }
     
     public static String desxifraRot13(String cadena){
-        char [] minus = abcMinus.toCharArray();
-        char [] majus = abcMajus.toCharArray();
         String solucio = "";
 
         for (int i = 0; i < cadena.length(); i++) {
