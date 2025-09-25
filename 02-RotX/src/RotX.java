@@ -1,8 +1,3 @@
-package 02-RotX;
-
 public class RotX {
-    
-    
-
-
+    final static char [] minus
 }
