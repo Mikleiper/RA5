@@ -20,12 +20,13 @@ public class RotX {
     }
 
     public static int index(char c) {
-        int index
+        int index;
         if (MINUS[c] != -1) { // és minuscula
             index = MINUS[c];
         } else {
             index = MAJUS[c];
         }
+        return index;
     }
 
     public static String xifraRotX(String cadena, int desplaçament) {
