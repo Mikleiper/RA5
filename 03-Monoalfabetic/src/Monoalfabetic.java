@@ -14,7 +14,7 @@ public class Monoalfabetic {
         //Permutem
         Collections.shuffle(llistaChar);
 
-        //convertim list a array
+        //convertim list permutada a array
         char [] permutat = new char[llistaChar.size()];
         for (int i = 0; i < llistaChar.size(); i ++){
             permutat[i] = llistaChar.get(i);
@@ -23,6 +23,7 @@ public class Monoalfabetic {
         return permutat;
     }
 
+    /*
     private static int indexXifrat(char c, boolean majuscula) {
         if (majuscula) {
             return new String(MAJUS).indexOf(c);
@@ -37,25 +38,28 @@ public class Monoalfabetic {
         } else {
             return new String(PERMUMAJUS).toLowerCase().indexOf(c);
         }
+    }*/
+
+    private static int index(char c, boolean majuscula) {
+        if (majuscula) {
+            return new String(MAJUS).indexOf(c);
+        } else {
+            return new String(MAJUS).toLowerCase().indexOf(c);
+        }
     }
 
     private static String xifraMonoAlfa(String cadena){
         StringBuilder solucio = new StringBuilder();
 
         for (char c : cadena.toCharArray()) {
-            int idx = indexXifrat(c, false); // mirar si és minúscula
+            boolean majuscula = Character.isUpperCase(c); // mirar si és minúscula o majuscula
+            int idx = index(c,majuscula); 
             if (idx != -1) {
-                solucio.append(Character.toLowerCase(PERMUMAJUS[idx]));
-                continue;
+                char trobat = permutaAlfabet(MAJUS)[idx]; 
+                solucio.append(majuscula ? trobat : Character.toLowerCase(trobat)); // si és majuscula True append directament, si és majuscula False append tolowercase
+            } else {
+                solucio.append(c); // no és un char de l'alfabet
             }
-
-            idx = indexXifrat(c, true); // mirar si és majúscula
-            if (idx != -1) {
-                solucio.append(PERMUMAJUS[idx]);
-                continue;
-            }
-
-            solucio.append(c); // no és ni majúscula ni minúscula
         }
         return solucio.toString();
     }
@@ -64,24 +68,26 @@ public class Monoalfabetic {
         StringBuilder solucio = new StringBuilder();
 
         for (char c : cadena.toCharArray()) {
-            int idx = indexDesxifrat(c, false); // mirar si és minúscula
+            boolean majuscula = Character.isUpperCase(c); // mirar si és minúscula o majuscula
+            int idx = indexDesxifrat(c,majuscula); 
             if (idx != -1) {
-                solucio.append(Character.toLowerCase(PERMUMAJUS[idx]));
-                continue;
+                char trobat = MAJUS[idx]; 
+                solucio.append(majuscula ? trobat : Character.toLowerCase(trobat)); // si és majuscula True append directament, si és majuscula False append tolowercase
+            } else {
+                solucio.append(c); // no és un char de l'alfabet
             }
-
-            idx = indexDesxifrat(c, true); // mirar si és majúscula
-            if (idx != -1) {
-                solucio.append(PERMUMAJUS[idx]);
-                continue;
-            }
-
-            solucio.append(c); // no és ni majúscula ni minúscula
         }
         return solucio.toString();
     }
+
     public static void main(String[] args) {
-        System.out.println(xifraMonoAlfa("Hello"));
+        String [] proves = {"El Pingu pingunea", "Qui dia passa, any empeny!", "8 On hi ha fum, 76? hi ha foc." };
+        for (String i : proves){
+            System.out.printf("Original:   %s%n", i);
+            System.out.printf("Xifrat:   %s%n", xifraMonoAlfa(i));
+            System.out.printf("Desxifrat:   %s%n", desxifraMonoAlfa(i));
+        }
     }
 }
-
+//TODO revisar desxifrat
+//TODO quitar [] permutado del inicio
