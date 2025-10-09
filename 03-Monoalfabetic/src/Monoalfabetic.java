@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Monoalfabetic {
     final static char[] MAJUS = {'A','À','Á','B','C','Ç','D','E','È','É','F','G','H','I','Ì','Í','Ï','J','K','L','M','N','Ñ','O','Ò','Ó','P','Q','R','S','T','U','Ù','Ú','Ü','V','W','X','Y','Z'};
-    final static char[] PERMUMAJUS = permutaAlfabet(MAJUS);
+    private final static char[] PERMUMAJUS = permutaAlfabet(MAJUS);
 
     private static char [] permutaAlfabet(char[] array){
         // Convertir char[] a List per poder usar Collections.shuffle
