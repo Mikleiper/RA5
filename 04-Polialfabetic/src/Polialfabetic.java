@@ -55,7 +55,7 @@ public class Polialfabetic {
     public static String desxifraPoliAlfa(String msgXifrat){
         StringBuilder solucio = new StringBuilder();
         for (char c : msgXifrat.toCharArray()) {
-            permutaAlfabet(); //permutem cada caracter   EL PROBLEMA ES Q PERMUTA TB LOS ESPACIOS!!! HAY Q PONER UN IF Q FILTRE PRIMERO LOS ESPACIOS!!!!!!
+            permutaAlfabet(); //permutem cada caracter   
             int idx = index(c, permutatMajus);
             if (idx != -1) {
                 char trobat = ALFABETMAJUS[idx]; 
